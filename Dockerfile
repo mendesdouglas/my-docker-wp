@@ -1,6 +1,9 @@
 FROM wordpress:latest
+
 RUN apt-get update && apt-get install -y unzip && rm -r /var/lib/apt/lists/*
-RUN touch /usr/local/etc/php/conf.d/upload-limit.ini && echo "upload_max_fileszie = 32M" >> /usr/local/etc/php/conf.d/upload-limit.ini
+RUN touch /usr/local/etc/php/conf.d/upload-limit.ini \ 
+	&& echo "upload_max_fileszie = 32M" >> /usr/local/etc/php/conf.d/upload-limit.ini \
+	&& echo "post_max_size = 32M" >> /usr/local/etc/php/conf.d/upload-limit.ini
 
 RUN a2enmod expires headers
 
